@@ -1,63 +1,44 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
 
-
-#define MAX_SIZE 
-long long int fib(long long int *F, long long int *N, long long int n) {
+intmax_t fib(intmax_t *F, intmax_t *N, intmax_t n) {
     if (n == 0 || n == 1) {
-        F[n] = n; N[n] = n;
+        F[n] = n;
+        N[n] = n;
         return F[n];
-    }
-    else if (N[n] == n) {
+    } else if (N[n] == n) {
         return F[n];
-    }
-    else {
+    } else {
         N[n] = n;
         F[n] = fib(F, N, n - 1) + fib(F, N, n - 2);
+        return F[n];
     }
-    return F[n];
 }
 
-
 int main() {
-    long long int n, base, rem, index, count = 1;
-    while ((scanf("%lld %lld", &n, &base)) && (n != 0 || base != 0)) {
+    intmax_t n, base, count = 1;
+    while (1) {
+        if ((scanf("%jd %jd", &n, &base)) == -1 || (n == 0 && base == 0))
+            break;
         // In Each Iteration
-        rem = 0;
-        long long int calls = 0, last_digit;
-        long long int F[3000]; // *F = (long long int *) calloc(n + 3, sizeof(long long int));
-        long long int N[3000]; // *N = (long long int *) calloc(n + 3, sizeof(long long int));
+        intmax_t *F = (intmax_t *)calloc(n + 3, sizeof(intmax_t));
+        intmax_t *N = (intmax_t *)calloc(n + 3, sizeof(intmax_t));
         if (F == NULL || N == NULL) {
+            printf("\nOVERFLOW\n");
             return 1;
         }
         for (int i = 0; i < n + 3; i++) {
-        	F[i] = 0; N[i] = -1;
+            F[i] = 0;
+            N[i] = -1;
         }
-        // Calculate The Number Of Calls
-        long long int result_of_n_1 = fib(F, N, n + 1);
-        // printf("\result_of_n_1 = %lld\n", result_of_n_1);
-        calls = 2 * result_of_n_1 - 1;
-        // printf("\ncalls = %lld\n", calls);
-        // Translate To The Base
-        last_digit = calls % base;
-        // Print The Result
-        printf("\nCase %lld: %lld %lld %lld\n", count, n, base, last_digit);
+        printf("\nresult = %jd\n", fib(F, N, n + 1));
+        intmax_t last_digit = 2 * fib(F, N, n + 1) - 1;
+        printf("\nCase %jd: %jd %jd %jd\n", count, n, base, last_digit % base);
+        free(F);
+        free(N);
         count++;
-        //free(F);
-       //free(N);
     }
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
