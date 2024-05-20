@@ -1,42 +1,35 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
-
-intmax_t fib(intmax_t *F, intmax_t *N, intmax_t n) {
-    if (n == 0 || n == 1) {
-        F[n] = n;
-        N[n] = n;
-        return F[n];
-    } else if (N[n] == n) {
-        return F[n];
-    } else {
-        N[n] = n;
-        F[n] = fib(F, N, n - 1) + fib(F, N, n - 2);
-        return F[n];
-    }
+#include <inttypes.h>
+int64_t fib(int64_t n) {
+	if (n <= 1) return n;
+	else {
+		int64_t W = 1, U = 0, V = 0;
+		for (int i = 2; i < n + 1; i+= 2) {
+			U = W + V;
+			V = W;
+			W = U;
+			if (n != 2) {
+				U = W + V;
+				V = W;
+				W = U;				
+			}
+		}
+		return U;
+	} 
 }
-
 int main() {
-    intmax_t n, base, count = 1;
+    int64_t n, base, count = 1;
     while (1) {
-        if ((scanf("%jd %jd", &n, &base)) == -1 || (n == 0 && base == 0))
-            break;
-        // In Each Iteration
-        intmax_t *F = (intmax_t *)calloc(n + 3, sizeof(intmax_t));
-        intmax_t *N = (intmax_t *)calloc(n + 3, sizeof(intmax_t));
-        if (F == NULL || N == NULL) {
-            printf("\nOVERFLOW\n");
-            return 1;
-        }
-        for (int i = 0; i < n + 3; i++) {
-            F[i] = 0;
-            N[i] = -1;
-        }
-        printf("\nresult = %jd\n", fib(F, N, n + 1));
-        intmax_t last_digit = 2 * fib(F, N, n + 1) - 1;
-        printf("\nCase %jd: %jd %jd %jd\n", count, n, base, last_digit % base);
-        free(F);
-        free(N);
+		if ((scanf("%" PRId64 " %" PRId64, &n, &base)) == EOF || (n == 0 && base == 0)) break;
+        // Print The Result
+        int64_t result = fib(n + 1);
+        int64_t last_digit = (2 * result) - 1;
+        last_digit = (last_digit) % base;
+        // Print result with modulo
+        printf("Case %" PRId64 ": %" PRId64 " %" PRId64 " %" PRId64 "\n", count, n, base, last_digit);
+
         count++;
     }
     return 0;
