@@ -12,19 +12,16 @@ int getMax(int blocks[], int size) {
 */
 
 int find_blocks(int blocks[], int M, int N) {
-	int count = 0, reset = M, div, multi, result = 0, count_blocks = N - 1;
-	int max = blocks[count_blocks];
-	// printf("\nStart Searching : \n");
-	while (M > result) {
-		max = blocks[count_blocks];
-		multi = reset % max;
-		div = reset / max;
-		result += (div * max);
-		if (count_blocks != 0) count_blocks--;
+	int sub = M, div, i = N - 1, multi, result = 0, count = 0;
+	while (sub != 0 && i >= 0) {
+		div = sub / blocks[i];
+		multi = div * blocks[i];
+		result += multi;
+		sub = M - result;
 		count += div;
-		reset = reset - result;
-		// printf("\ncount = %d, max = %d, multi = %d, div= %d, result = %d\n", count, max, multi, div, result);
+		i--;
 	}
+	// printf("\ncount = %d\n", count);
 	return count;
 }
 
@@ -35,7 +32,7 @@ int main() {
 	scanf("%d", &T);
 	while (count < T) {
 		if (scanf("%d %d", &N, &M) == -1) break;
-		int blocks[N + 1];
+		int blocks[N];
 		for (int i = 0; i < N; i++) {
 			scanf("%d", &blocks[i]);
 		}
