@@ -43,7 +43,7 @@ int main() {
 	}
 	for (int i = 0; i < T; i++) {
 		printf("%d\n", needed_blocks[i]);
-	}
+	}	
 	return 0;
 }
 
