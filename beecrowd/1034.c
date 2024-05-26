@@ -1,28 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*
-int getMax(int blocks[], int size) {
-	int max = blocks[0];
-	for (int i = 1; i < size; i++) {
-		if (max < blocks[i]) max = blocks[i];	
-	}
-	return max;
-}
-*/
-
 int find_blocks(int blocks[], int M, int N) {
-	int sub = M, div, i = N - 1, multi, result = 0, count = 0;
-	while (sub != 0 && i >= 0) {
-		div = sub / blocks[i];
-		multi = div * blocks[i];
-		result += multi;
-		sub = M - result;
-		count += div;
-		i--;
-	}
-	// printf("\ncount = %d\n", count);
-	return count;
+    int dp[M + 1];
+    for (int i = 0; i <= M; i++) {
+        dp[i] = M + 1; // Initialize with a large number
+    }
+    dp[0] = 0;
+
+    for (int i = 1; i <= M; i++) {
+        for (int j = 0; j < N; j++) {
+            if (blocks[j] <= i) {
+                dp[i] = (dp[i] < dp[i - blocks[j]] + 1) ? dp[i] : dp[i - blocks[j]] + 1;
+            }
+        }
+    }
+    return (dp[M] > M) ? -1 : dp[M];
 }
 
 
