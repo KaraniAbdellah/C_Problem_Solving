@@ -13,7 +13,7 @@ int main() {
     minute = d - c;
     if (minute < 0) {
         hour -= 1;
-        minute = 60 + minute;   
+        minute = 60 + minute;
     }
     if (hour == 24 && minute != 0) {
         hour = 0;
