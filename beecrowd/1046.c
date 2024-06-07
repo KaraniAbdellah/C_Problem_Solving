@@ -1,18 +1,14 @@
 #include <stdio.h>
-#include <math.h>
 
 int main() {
-    double a, b, c;
-    scanf("%lf %lf %lf", &a, &b, &c);
-    if (a >= b + c) printf("NAO FORMA TRIANGULO\n");
-    if (pow(a , 2) == pow(b, 2) + pow(c, 2)) printf("TRIANGULO RETANGULO\n");
-    if (pow(a , 2) > pow(b, 2) + pow(c, 2)) printf("TRIANGULO OBTUSANGULO\n");
-    if (pow(a , 2) < pow(b, 2) + pow(c, 2)) printf("TRIANGULO ACUTANGULO\n");
-    if (a == b && b == c && c == a) printf("TRIANGULO EQUILATERO\n");
-    if (a + b > c && a + c > b && b + c > a) printf("TRIANGULO ISOSCELES\n");
+    int a, b, i;
+    scanf("%d %d", &a, &b);
+    if (a > b) {
+        printf("O JOGO DUROU %d HORA(S)\n", 24 - a + b);
+    } else if (a < b) {
+        printf("O JOGO DUROU %d HORA(S)\n", b - a);
+    } else printf("O JOGO DUROU 24 HORA(S)\n");
     return 0;
 }
-
-
 
 
