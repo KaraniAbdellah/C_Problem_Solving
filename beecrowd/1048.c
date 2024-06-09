@@ -1,4 +1,4 @@
-#include <stdio.h>
+    #include <stdio.h>
  
  0 - 400.00
 400.01 - 800.00
@@ -19,17 +19,35 @@ int main() {
         temp = salary;
         printf("Novo salario: %.2f \n Reajuste ganho: %.2f\nEm percentual: %d %", (salary * 15) / 100, salary - temp, 15);
     }
-    if (salary > 400 && salary <= 800) {
+    else if (salary > 400 && salary <= 800) {
         temp = salary;
-        printf("Novo salario: %.2f \n Reajuste ganho: %.2f\nEm percentual: %d %", (salary * 15) / 100, salary - temp, 15);
+        printf("Novo salario: %.2f \n Reajuste ganho: %.2f\nEm percentual: %d %", (salary * 12) / 100, salary - temp, 12);
     }
-    if (salary <= 0 && salary >= 400) {
+    else if (salary > 800 && salary >= 1200) {
         temp = salary;
-        printf("Novo salario: %.2f \n Reajuste ganho: %.2f\nEm percentual: %d %", (salary * 15) / 100, salary - temp, 15);
+        printf("Novo salario: %.2f \n Reajuste ganho: %.2f\nEm percentual: %d %", (salary * 10) / 100, salary - temp, 10);
     }
-    if (salary <= 0 && salary >= 400) {
+    else if (salary > 1200 && salary >= 2000) {
         temp = salary;
-        printf("Novo salario: %.2f \n Reajuste ganho: %.2f\nEm percentual: %d %", (salary * 15) / 100, salary - temp, 15);
+        printf("Novo salario: %.2f \n Reajuste ganho: %.2f\nEm percentual: %d %", (salary * 7) / 100, salary - temp, 7);
+    } else {
+        temp = salary;
+        printf("Novo salario: %.2f \n Reajuste ganho: %.2f\nEm percentual: %d %", (salary * 7) / 100, salary - temp, 7);
     }
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
