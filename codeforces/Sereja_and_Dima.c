@@ -10,8 +10,7 @@ int main() {
     }
     temp = T[0];
     int count = 0;
-    for (int i = n - 2; i >= 0; i--) {
-        if (T[i] != -1) {
+    for (int i = n - 1; i >  0; i--) {
             if (temp > T[i]) {
                 if (count % 2 == 0) sereja += temp;
                 else dima += temp;
@@ -19,12 +18,11 @@ int main() {
             } else {
                 if (count % 2 == 0) sereja += T[i];
                 else dima += T[i];
-                T[i] = -1;
             }
             count++;
-        }
-
     }
+    if (count % 2 == 0) sereja += temp;
+    else dima += temp;
     printf("%d %d", sereja, dima);
     return 0;
 }
