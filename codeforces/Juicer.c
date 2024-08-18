@@ -1,24 +1,23 @@
 #include <stdio.h>
-
+#include <stdint.h>
 
 
 int main() {
     
-    int b, n, d;
-    scanf("%d %d %d", &n, &b, &d);
-    int T[n];
-    for (int i = 0; i < n; i++) scanf("%d", &T[i]);
+    int64_t b, n, d;
+    scanf("%ld %ld %ld", &n, &b, &d);
+    int64_t T[n];
+    for (int i = 0; i < n; i++) scanf("%ld", &T[i]);
     
-    int count = 0, size = 0;
+    int64_t count = 0, size = 0;
     for (int i = 0; i < n; i++) {
-        if (T[i] <= b) size += T[i];
+        if (T[i] == d) count--;
+        else if (T[i] <= b) size += T[i];
+        else;
     }
     
     count = size / d;
-    
-    if (count == d) count--;
-    
-    printf("%d", count);
+    printf("%ld", count);
     
     return 0;
 }
