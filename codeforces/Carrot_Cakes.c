@@ -4,21 +4,24 @@
 int main() {
     int n, t, k, d;
     scanf("%d %d %d %d", &n, &t, &k, &d);
-    int i = 1;
-    int times = t;
-    int nbr_cakes = 0;
+    int x_time = 0, nbr_cakes = 0;
     while (1) {
-        nbr_cakes += k * i;
         if (nbr_cakes >= n) {
-            break;
+            printf("NO"); break;
         }
-        times += t;
-        i++;
+        x_time += t;
+        nbr_cakes += k;
+        if (x_time > d && nbr_cakes < n) {
+            printf("YES"); return 0;
+        }
+
     }
     
-    printf("times = %d\n", times);
-    if (times <= d || nbr_cakes >= n) printf("NO");
-    else printf("YES");
+    
+    // another idea
+    int x_time = (n % k) == 0 ? (n / k) * t : ((n / k) + 1) * t;
+    if (d + t < s) printf("YES");
+    else printf("NO");
     
     return 0;
 }
