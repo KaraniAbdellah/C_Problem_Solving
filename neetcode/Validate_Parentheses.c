@@ -13,24 +13,24 @@ typedef struct Stack {
 
 
 // Function Prototype
-void insert_at_stack(Stack **head, char data);
+void insert_at_stack(Stack **head, Stack **tail, char data);
 void delete_from_stack(Stack **head);
 
 
 
 // insert at stack
-void insert_at_stack(Stack **head, char data) {
+void insert_at_stack(Stack **head, Stack **tail, char data) {
     Stack *new_node = (Stack *) malloc(sizeof(Stack));
     new_node->next = new_node->prev = NULL;
     new_node->data = data;
     
     if (*head == NULL) {
-        *head = new_node; return;
+        *head = *tail = new_node; return;
     }
     
-    new_node->prev = *head;
-    (*head)->next = new_node;
-    *head = new_node;
+    new_node->prev = *tail;
+    (*tail)->next = new_node;
+    *tail = new_node;
 }
 
 
@@ -64,54 +64,64 @@ void print_stack(Stack *head) {
 
 
 int main() {
-    Stack *head = NULL;
+    Stack *head = NULL, *tail = NULL;
     char *input = (char *) malloc(sizeof(char));
     char c;
     while ((c = getchar()) && c != '\n') {
-        insert_at_stack(&head, c);
+        insert_at_stack(&head, &tail, c);
     }
     
     
     int check = 1;
-    Stack *temp = head;
-    while (temp->prev != NULL) {
+    Stack *temp1 = head;
+    Stack *temp2 = tail;
+    while (temp1 != temp2) {
         
-        if (temp->data == '(') {
-            if (temp->prev->data != ')') {
+        
+        if (temp1->data == ')') {
+            if (temp2->data != '(') {
                 check = 0; break;
             }
         }
-        if (temp->data == ')') {
-            if (temp->prev->data != '(') {
+        
+        if (temp2->data == ')') {
+            if (temp1->data != '(') {
                 check = 0; break;
             }
         }
-        if (temp->data == '{') {
-            if (temp->prev->data != '}') {
+        
+        if (temp1->data == ']') {
+            if (temp2->data != '[') {
                 check = 0; break;
             }
         }
-        if (temp->data == '}') {
-            if (temp->prev->data != '{') {
+        
+        if (temp2->data == '[') {
+            if (temp1->data != ']') {
                 check = 0; break;
             }
         }
-        if (temp->data == '[') {
-            if (temp->prev->data != ']') {
+        
+        if (temp1->data == '{') {
+            if (temp2->data != '}') {
                 check = 0; break;
             }
         }
-        if (temp->data == ']') {
-            if (temp->prev->data != '[') {
+        
+        if (temp2->data == '}') {
+            if (temp1->data != '{') {
                 check = 0; break;
             }
         }
-        temp = temp->prev;
+        
+        temp1 = temp1->next;
+        temp2 = temp2->prev;
+        
     }
     
     
-    if (check == 0) printf("false");
-    else printf("true");
+    if (check == 0) printf("false\n");
+    else printf("true\n");
     
     
     return 0;
