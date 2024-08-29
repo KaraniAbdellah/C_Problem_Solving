@@ -14,9 +14,9 @@ typedef struct Stack {
 
 // Function Prototype
 void insert_at_stack(Stack **head, Stack **tail, char data);
-void delete_from_stack(Stack **head);
-
-
+void delete_from_stack(Stack **head, Stack **tail);
+int is_valid(char *str);
+int is_match(char first, char second);
 
 // insert at stack
 void insert_at_stack(Stack **head, Stack **tail, char data) {
@@ -36,93 +36,56 @@ void insert_at_stack(Stack **head, Stack **tail, char data) {
 
 
 // delete from stack
-void delete_from_stack(Stack **head) {
+void delete_from_stack(Stack **head, Stack **tail) {
     
-    if (*head == NULL) return;
+    if (*tail == NULL) return;
     
-    Stack *temp = *head;
-    if ((*head)->prev != NULL) {
-        (*head)->prev->next = NULL;
-        *head = (*head)->prev;
+    Stack *temp = *tail;
+    if ((*tail)->prev != NULL) {
+        (*tail)->prev->next = NULL;
+        *tail = (*tail)->prev;
     }
-    else *head = NULL;
+    else *tail = *head = NULL;
     
     free(temp);
     
 }
 
 
-void print_stack(Stack *head) {
-    Stack *temp = head;
-    while(temp != NULL) {
-        printf("%c --> ", temp->data);
-        temp = temp->next;
-    }
+int is_match(char first, char second) {
+    
+    return (first == '[' && second == ']') ||
+        (first == '(' && second == ')') ||
+        (first == '{' && second == '}');
+    
 }
 
 
 
+int is_valid(char *str) {
+    Stack *head = NULL, *tail = NULL;
+    for (int i = 0; str[i] != '\0'; i++) {
+        char current = str[i];
+        if (current == '{' || current == '(' || current == '[') {
+            insert_at_stack(&head, &tail, current);
+        } else if (current == '}' || current == ')' || current == ']') {
+            if (head == NULL || !is_match(tail->data, current)) {
+                return 0;
+            }
+            delete_from_stack(&head, &tail);
+        }
+    }
+    return head == NULL;
+}
+
 
 int main() {
-    Stack *head = NULL, *tail = NULL;
-    char *input = (char *) malloc(sizeof(char));
-    char c;
-    while ((c = getchar()) && c != '\n') {
-        insert_at_stack(&head, &tail, c);
-    }
     
+    char str[MAX];
+    scanf("%s", str); getchar();
     
-    int check = 1;
-    Stack *temp1 = head;
-    Stack *temp2 = tail;
-    while (temp1 != temp2) {
-        
-        
-        if (temp1->data == ')') {
-            if (temp2->data != '(') {
-                check = 0; break;
-            }
-        }
-        
-        if (temp2->data == ')') {
-            if (temp1->data != '(') {
-                check = 0; break;
-            }
-        }
-        
-        if (temp1->data == ']') {
-            if (temp2->data != '[') {
-                check = 0; break;
-            }
-        }
-        
-        if (temp2->data == '[') {
-            if (temp1->data != ']') {
-                check = 0; break;
-            }
-        }
-        
-        if (temp1->data == '{') {
-            if (temp2->data != '}') {
-                check = 0; break;
-            }
-        }
-        
-        if (temp2->data == '}') {
-            if (temp1->data != '{') {
-                check = 0; break;
-            }
-        }
-        
-        temp1 = temp1->next;
-        temp2 = temp2->prev;
-        
-    }
-    
-    
-    if (check == 0) printf("false\n");
-    else printf("true\n");
-    
+    if (is_valid(str)) printf("true\n");
+    else printf("false\n");
     
     return 0;
 }
