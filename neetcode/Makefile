@@ -1,6 +1,6 @@
 CC = gcc
 TARGET = main
-SRCS = Validate_Parentheses.c
+SRCS = Binary_Search.c
 
 all: clean $(TARGET)
 
