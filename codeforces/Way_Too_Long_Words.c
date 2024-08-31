@@ -11,15 +11,7 @@ int getNbrDigits(int n) {
         n /= 10;
         i++;
     }
-}
-
-char *toString(int n) {
-    int nbr_digits = getNbrDigits(n);
-    char *re = (char *) malloc(sizeof(char) * (nbr_digits + 1));
-    for (int i = 0; i < nbr_digits; i++) {
-        re[i] = (char) ((n / 10) + 48);
-    }
-    re[nbr_digits] = '\0';
+    return i;
 }
 
 int main() {
@@ -27,32 +19,41 @@ int main() {
     
     int n;
     scanf("%d", &n); getchar();
-    char *result = (char *) malloc(sizeof(char) * MAX);
-    result[MAX] = '\0';
-    int j = 0;
+    char *result[n];
     for (int i = 0; i < n; i++) {
         int count = 0;
         char c;
+        // get string
         char *str = (char *) calloc(MAX, sizeof(char));
         while ((c = getchar()) && c != '\n') {
             str[count] = c; count++;
         }
         str[count] = '\0';
+        result[i] = (char *) malloc(sizeof(char) * count);
         if (count > 10) {
-            result[j] = str[0];
-            strcat(result, toString(count - 2));
-            j += getNbrDigits(count - 2);
-            result[j] = str[count - 1];
-            j++;
+            int j = count - 2;
+            int nbr_digits = getNbrDigits(j);
+            result[i][0] = str[0];
+            for (int k = 1; k <= nbr_digits; k++) {
+                
+                result[i][nbr_digits - k + 1] = (char) ((j % 10) + 48); 
+                j /= 10;
+                
+            }
+            result[i][nbr_digits + 1] = str[count - 1];
+            result[i][nbr_digits + 2] = '\0';
         } else {
-            strcat(result, str);
-            j += count;
+            strcat(result[i], str);
         }
-        result[j] = '\n';
-        j++;
     }
-    result[j] = '\0';
-    printf("%s", result);
+    
+    for (int i = 0; i < n; i++) {
+        
+        if (i == n - 1) printf("%s", result[i]);
+        else printf("%s\n", result[i]);
+        
+    }
+    
     
     return 0;
 }
