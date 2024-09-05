@@ -1,6 +1,6 @@
 CC = gcc
 TARGET = main
-SRCS = Binary_Search.c
+SRCS = Binary_Tree.c
 
 all: clean $(TARGET)
 
