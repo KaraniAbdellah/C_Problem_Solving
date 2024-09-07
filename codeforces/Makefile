@@ -1,6 +1,6 @@
 CC = gcc
 TARGET = main
-SRCS = Helpful_Maths.c
+SRCS = Team_Olympiad.c
 
 
 all: clean $(TARGET)

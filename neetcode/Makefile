@@ -1,6 +1,6 @@
 CC = gcc
 TARGET = main
-SRCS = Binary_Tree.c
+SRCS = Inorder_Traversal.c
 
 all: clean $(TARGET)
 
