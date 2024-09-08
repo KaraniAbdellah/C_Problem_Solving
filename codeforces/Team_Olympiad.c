@@ -1,16 +1,5 @@
 #include <stdio.h>
-
-
-int get_nbr_teams(int n);
-
-int get_nbr_teams(int n) {
-    int count = 0;
-    while (n != 0) { 
-        n = n / 3;
-        count++;
-    }
-    return count;
-}
+#include <stdlib.h>
 
 
 
@@ -19,12 +8,14 @@ int main() {
     int n;
     scanf("%d", &n);
     int S[n];
-    for (int i = 0; i < n; i++) scanf("%d", &S[i]);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &S[i]);
+    }
     
-    // get number of teams
-    int nbr_teams = get_nbr_teams(n);
-    printf("%d\n", nbr_teams);
-    for (int i = 0; i < nbr_teams; i++) {
+    int *Result = (int *) malloc(1 * sizeof(int));
+    int t = 0, count = 0;
+    
+    while (1) {
         int R[3]; for (int i = 0; i < 3; i++) R[i] = -1;
         for (int j = 0; j < n; j++) {
             if (R[S[j] - 1] == -1 && S[j] != -1) {
@@ -32,14 +23,27 @@ int main() {
                 S[j] = -1;
             }
         }
-        for (int i = 0; i < 3; i++) printf("%d ", R[i]);
-        printf("\n");
+        if (R[0] == -1 || R[1] == -1 || R[2] == -1) break;
+        else {
+            Result = realloc(Result, (t + 3) * sizeof(int));
+            Result[t] = R[0]; Result[t + 1] = R[1]; Result[t + 2] = R[2];
+            t += 3;
+        }
+        count++;
     }
     
+    printf("%d\n", count);
+    
+    if (count != 0) {
+        for (int i = 0; i < count * 3; i++) {
+            if (i != 0 && i % 3 == 0) printf("\n");
+            printf("%d ", Result[i]);
+        }
+    }
+    printf("\n");
     return 0;
     
 }
-
 
 
 

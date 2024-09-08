@@ -1,6 +1,6 @@
 CC = gcc
 TARGET = main
-SRCS = Team_Olympiad.c
+SRCS = New_Password.c
 
 
 all: clean $(TARGET)
