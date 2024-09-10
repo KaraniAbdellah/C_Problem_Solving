@@ -1,6 +1,6 @@
 CC = gcc
 TARGET = main
-SRCS = New_Password.c
+SRCS = Lineland_Mail.c
 
 
 all: clean $(TARGET)
