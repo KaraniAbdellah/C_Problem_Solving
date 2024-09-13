@@ -1,6 +1,6 @@
 CC = gcc
 TARGET = main
-SRCS = Lineland_Mail.c
+SRCS = Uncommon_Subsequence.c
 
 
 all: clean $(TARGET)
