@@ -1,6 +1,6 @@
 CC = gcc
 TARGET = main
-SRCS = Inorder_Traversal.c
+SRCS = Reverse_a_Linked_List.c
 
 all: clean $(TARGET)
 
