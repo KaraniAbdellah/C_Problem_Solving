@@ -1,6 +1,6 @@
 CC = gcc
 TARGET = main
-SRCS = Reverse_a_Linked_List.c
+SRCS = K_Largest_Int.c
 
 all: clean $(TARGET)
 
