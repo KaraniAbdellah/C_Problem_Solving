@@ -1,6 +1,6 @@
 CC = gcc
 TARGET = main
-SRCS = K_Largest_Int.c
+SRCS = Subsets.c
 
 all: clean $(TARGET)
 
