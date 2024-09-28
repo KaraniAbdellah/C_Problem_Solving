@@ -1,6 +1,6 @@
 CC = gcc
 TARGET = main
-SRCS = Uncommon_Subsequence.c
+SRCS = Snacktower.c
 
 
 all: clean $(TARGET)

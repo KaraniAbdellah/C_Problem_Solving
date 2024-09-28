@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#define n 100000
+#define n 100010
 
 int main() {
     
@@ -12,12 +12,10 @@ int main() {
     int size1 = strlen(str1);
     int size2 = strlen(str2);
     
-    for (int i = 0; i < (size1 < size2 ? size1 : size2); i++) {
-        if (str1[i] > str2[i]) {
-            printf("%d", size1); return 0;
-        }
-        if (str1[i] < str2[i]) {
-             printf("%d", size2); return 0;
+    for (int i = 0; i < (size1 < size2 ? size2 : size1); i++) {
+        if (str1[i] != str2[i]) {
+        	int lenght = (size1 < size2 ? size2 : size1);
+        	printf("%d\n", lenght); return 0;
         }
     }
     
