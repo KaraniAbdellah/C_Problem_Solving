@@ -1,6 +1,6 @@
 CC = gcc
 TARGET = main
-SRCS = Snacktower.c
+SRCS = Oath_Nights_Watch.c
 
 
 all: clean $(TARGET)
