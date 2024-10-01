@@ -1,6 +1,6 @@
 CC = gcc
 TARGET = main
-SRCS = Oath_Nights_Watch.c
+SRCS = Pangram.c
 
 
 all: clean $(TARGET)
