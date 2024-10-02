@@ -1,6 +1,6 @@
 CC = gcc
 TARGET = main
-SRCS = Pangram.c
+SRCS = Twins.c
 
 
 all: clean $(TARGET)
