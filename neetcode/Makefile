@@ -1,6 +1,6 @@
 CC = gcc
 TARGET = main
-SRCS = Subsets.c
+SRCS = Islands.c
 
 all: clean $(TARGET)
 
