@@ -1,6 +1,6 @@
 CC = gcc
 TARGET = main
-SRCS = Islands.c
+SRCS = Is_anagram.c
 
 all: clean $(TARGET)
 
