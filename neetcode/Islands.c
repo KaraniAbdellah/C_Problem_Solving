@@ -93,25 +93,66 @@ void print_graph(Graph *g) {
 
 
 
-int numIslands(Graph *g) {
+int num_islands(Graph *g) {
 	
+	int count = 0;
 	
+	// Loop through all cells
+	for (int i = 0; i < g->nbr_nodes; i++) {
+		for (int j = 0; j < g->nbr_nodes; j++) {
+			// Find land ('1')
+			if (g->edges[i][j] == 1) {
+			
+				// Islands found & Make it visited 
+				count++;
+				g->edges[i][j] = -1;
+				
+				// Look in all four directions (up, down, left, right)
+				int left = j - 1;
+				int right = j + 1;
+				int top = i - 1;
+				int down = i + 1;
+				
+				// Check The Boundaries --> invalid direction
+				if (top >= 0 && g->edges[top][j] == 1) {
+                    g->edges[top][j] = -1;
+                }
+                if (down < g->nbr_nodes && g->edges[down][j] == 1) {
+                    g->edges[down][j] = -1;
+                }
+                if (left >= 0 && g->edges[i][left] == 1) {
+                    g->edges[i][left] = -1;
+                }
+                if (right < g->nbr_nodes && g->edges[i][right] == 1) {
+                    g->edges[i][right] = -1;
+                }
+				
+			}
+		}
+	}
+	return count;
 	
 }
 
 
 int main() {
 	
-	Graph *g = create_graph(4);
+	Graph *g = create_graph(5);
 	
-	add_node_undirected(g, 0, 1);
-	add_node_undirected(g, 0, 2);
-	add_node_undirected(g, 0, 3);
-	add_node_undirected(g, 1, 3);
-	add_node_undirected(g, 2, 3);
+	add_node_directed(g, 0, 0);
+	add_node_directed(g, 0, 1);
+	add_node_directed(g, 0, 4);
+	add_node_directed(g, 1, 0);
+	add_node_directed(g, 1, 1);
+	add_node_directed(g, 1, 4);
+	add_node_directed(g, 2, 2);
+	add_node_directed(g, 3, 3);
+	add_node_directed(g, 3, 4);
+	
 	
 	print_graph(g);
 	
+	printf("Number Of Islands Is : %d\n", num_islands(g));
 	
 	
 	return 0;
