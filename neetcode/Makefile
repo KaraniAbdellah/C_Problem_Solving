@@ -1,6 +1,6 @@
 CC = gcc
 TARGET = main
-SRCS = Is_anagram.c
+SRCS = Sum_2.c
 
 all: clean $(TARGET)
 

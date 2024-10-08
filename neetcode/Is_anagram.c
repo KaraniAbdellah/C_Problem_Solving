@@ -3,39 +3,35 @@
 #include <stdbool.h>
 
 
-#define n 100
 
 
 int main() {
 	
-	char *s = (char *) malloc(sizeof(char));
-	char *t = (char *) malloc(sizeof(char));
+	int *T1 = (int *) calloc(26, sizeof(int));
+	int *T2 = (int *) calloc(26, sizeof(int));
+	int i = 0; char c;
+	while ((c = getchar()) && c != '\n') {
+		T1[c - 'a'] += 1; i++;
+	}
 
-	scanf("%[^\n]", s); getchar();
-	scanf("%[^\n]", t);
-	t[n - 1] = '\0'; s[n - 1] = '\0';
+	i = 0;
+	while ((c = getchar()) && c != '\n') {
+		T2[c - 'a'] += 1; i++;
+	}
 	
-	bool check = true;
-	
-	// must be deffrent lenght
-	
-	for (int i = 0; s[i] != '\0'; i++) {
-		char c = s[i]; int sub_check = 0;
-		for (int j = 0; t[j] != '\0'; j++) {
-			if (t[j] != '1' && c == t[j]) {
-				sub_check = 1; t[j] = '1'; break;
-			}
-		}
-		if (sub_check == 0) {
-			check = false; break;
+	for (int i = 0; i < 26; i++) {
+		if (T1[i] != T2[i]) {
+			printf("false\n"); return 0;
 		}
 	}
 	
-	printf("%d\n", check);
-	
-	
+	printf("true\n");
+		
 	return 0;
+	
 }
+
+
 
 
 
