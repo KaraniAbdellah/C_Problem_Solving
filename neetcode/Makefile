@@ -1,6 +1,6 @@
 CC = gcc
 TARGET = main
-SRCS = Sum_2.c
+SRCS = crypto.c
 
 all: clean $(TARGET)
 
@@ -9,8 +9,4 @@ $(TARGET): $(SRCS)
 
 clean:
 	rm -f $(TARGET)
-
-
-
-
 

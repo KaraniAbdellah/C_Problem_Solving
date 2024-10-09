@@ -3,34 +3,33 @@
 
 int main() {
 	
-	/*
+	// Define & Detting variables
 	int n, target;
 	scanf("%d %d", &n, &target);
-	for (int i = 0; i < n; i++) printf("%d", &T[i]);
-	*/
-	
-	int target = 9, n = 5;  
-	int T[5] = {1, 3, 4, 5, 7};
-	
-	int index1, index2;
+	int T[n];
+	for (int i = 0; i < n; i++)  scanf("%d", &T[i]);
+
+	// Solution1 using frute force
+	int check = 0;
 	for (int i = 0; i < n; i++) {
+		if (check) break;
 		for (int j = i + 1; j < n; j++) {
 			if (T[i] + T[j] == target) {
-				printf("[%d, %d]\n", i + 1, j + 1);
+				printf("[%d, %d]\n", i + 1, j + 1); check = 1;
 			} else if (T[i] + T[j] > target) break;
-			else;
+			else continue;
 		}
 	}
-	
-	// try to find another solution --> with two pointers
-	
-	
-	
-	
-	
-	
-	
-	
+		
+	// Solution2 using two pointers 
+	int *p1 = T, *p2 = T + n;
+	while (p1 < p2) {
+		if (*p1 + *p2 > target) p2--;
+		else if (*p1 + *p2 < target) p1++;
+		else {
+			printf("[%ld, %ld]\n", p1 - T + 1, p2 - T + 1); return 0;
+		}
+	}
 	
 	
 	return 0;
