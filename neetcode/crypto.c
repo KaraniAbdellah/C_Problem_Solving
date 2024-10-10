@@ -8,17 +8,14 @@ int main() {
 	
 	int n;
 	scanf("%d", &n);
-	int T[n];
-	for (int i = 0; i < n; i++) scanf("%d", &T[i]);
-	
-	// Get the min number in prices
-	int min = T[0], min_index = 0;
-	for (int i = 1; i < n; i++) {
-		if (min > T[i]) {
+	int T[n], min, min_index = 0;
+	for (int i = 0; i < n; i++) {
+		scanf("%d", &T[i]);
+		if (i == 0) min = T[i];
+		else if (T[i] < min) {
 			min = T[i]; min_index = i;
 		}
 	}
-	
 	
 	// Get the max number from min_index
 	int max = T[min_index];

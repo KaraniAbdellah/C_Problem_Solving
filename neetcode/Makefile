@@ -1,6 +1,6 @@
 CC = gcc
 TARGET = main
-SRCS = crypto.c
+SRCS = min_stack.c
 
 all: clean $(TARGET)
 
