@@ -1,6 +1,6 @@
 CC = gcc
 TARGET = main
-SRCS = min_stack.c
+SRCS = Search_2D_Matrix.c
 
 all: clean $(TARGET)
 
