@@ -1,6 +1,6 @@
 CC = gcc
 TARGET = main
-SRCS = Search_2D_Matrix.c
+SRCS = merge_two_linked_list.c
 
 all: clean $(TARGET)
 

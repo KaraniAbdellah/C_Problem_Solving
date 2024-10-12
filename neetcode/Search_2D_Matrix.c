@@ -27,15 +27,14 @@ int get_target_linear(int (*T)[4], int target, int x, int y) {
 int get_target_binary(int (*T)[4], int target, int x, int y) {
 	
 	int min = 0, max = (x * y) - 1;
-	while (min < max) {
+	while (min <= max) {
 		int mid = (max + min) / 2;
 		int value = *(*T + mid);
 		if (value == target) return 1;
-		else if (value < target) max = mid - 1;
-		else min = mid + 1;
+		else if (value < target) min = mid + 1;
+		else max = mid - 1;
 	}
 	return -1;
-	
 	
 }
 
