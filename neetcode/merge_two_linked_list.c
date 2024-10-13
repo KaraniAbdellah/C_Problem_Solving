@@ -39,25 +39,7 @@ list *merge_list_copy(list *l1, list *l2) {
 	
 	if (l1 == NULL && l2 == NULL) return NULL;
 	
-	list *head = NULL;
-	list *temp1 = l1, *temp2 = l2;
-	
-	while (temp1 != NULL || temp2 != NULL) {
-		
-		if (temp1 == NULL) insert_at_list(&head, temp2->data);
-		else if (temp2 == NULL) insert_at_list(&head, temp1->data);
-		else if (temp1 != NULL && temp2 != NULL && temp2->data < temp1->data) {
-			insert_at_list(&head, temp2->data);	
-			insert_at_list(&head, temp1->data);	
-		} else if (temp1 != NULL && temp2 != NULL && temp2->data > temp1->data) {
-			insert_at_list(&head, temp1->data);
-			insert_at_list(&head, temp2->data);
-		} else;
-		temp1 = temp1->next;
-		temp2 = temp2->next;
-		
-	}
-	return head;
+	return NULL;
 	
 }
 
