@@ -1,28 +1,33 @@
 #include <stdio.h>
 
+
+
+
 int main() {
 	
 	long long int n, k;
 	scanf("%lld %lld", &n, &k);
-	long long int even[n];
-	long long int odd[n];
 	
-	// find the odds & evnes number
-	long long int count1 = 0;
-	for (int i = 1; i <= n; i++) {
+	// find the odds & even numbers
+	long long int even_count = 1;
+	long long int odd_count = 1;
+	long long int middle = n / 2;
+	
+	if (n % 2 != 0) {
+		middle = (n / 2) + 1;
+	}
+	
+	for (long long int i = 1; i <= n; i++) {
 		if (i % 2 == 0) {
-			even[count1] = i; count1++;
+			if (middle + odd_count == k) {
+				printf("%lld", i); break;
+			} odd_count++;
+		} else {
+			if (even_count == k) {
+				printf("%lld", i); break;
+			} even_count++;
 		}
 	}
-	long long int count2 = 0;
-	for (int i = 1; i <= n; i++) {
-		if (i % 2 != 0) {
-			odd[count2] = i; count2++;
-		}
-	}
-	
-	// find the result
-	if ()
 	
 	
 	
