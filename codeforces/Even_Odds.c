@@ -29,10 +29,20 @@ int main() {
 			} even_count++;
 		}
 	}
-	
-	
+		
 	return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
