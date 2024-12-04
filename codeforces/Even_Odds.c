@@ -13,6 +13,7 @@ int main() {
 	long long int odd_count = 1;
 	long long int middle = n / 2;
 	
+	// if we have even number
 	if (n % 2 != 0) {
 		middle = (n / 2) + 1;
 	}
@@ -24,8 +25,8 @@ int main() {
 				printf("%lld", i); break;
 			} odd_count++;
 		} else {
-			if (even_count == k) {
 				printf("%lld", i); break;
+			if (even_count == k) {
 			} even_count++;
 		}
 	}
