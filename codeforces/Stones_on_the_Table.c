@@ -8,14 +8,11 @@ int main() {
     for (int i = 0; i < n; i++) {
         scanf("%c", &s);
         if (i == 0) p = s;
-        // printf("We Compare %d and %d and also count = %d\n", s, p, c);
         if (s == p && i != 0) c++;
         else p = s;
     }
     printf("%d", c);
     return 0;
 }
-
-
 
 
