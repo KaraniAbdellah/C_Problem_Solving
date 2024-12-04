@@ -1,6 +1,5 @@
 #include <stdio.h>
 
-
 int main() {
     int n, c = 0;
     char s, p;
@@ -14,5 +13,4 @@ int main() {
     printf("%d", c);
     return 0;
 }
-
 
