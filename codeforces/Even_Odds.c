@@ -17,6 +17,7 @@ int main() {
 		middle = (n / 2) + 1;
 	}
 	
+	// find the k ele
 	for (long long int i = 1; i <= n; i++) {
 		if (i % 2 == 0) {
 			if (middle + odd_count == k) {
@@ -28,8 +29,6 @@ int main() {
 			} even_count++;
 		}
 	}
-	
-	
 	
 	
 	return 0;
