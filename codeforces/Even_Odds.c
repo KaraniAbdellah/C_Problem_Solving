@@ -5,6 +5,7 @@
 
 int main() {
 	
+	// define varaibles
 	long long int n, k;
 	scanf("%lld %lld", &n, &k);
 	
