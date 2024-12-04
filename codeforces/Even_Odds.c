@@ -2,48 +2,32 @@
 
 
 
-
 int main() {
 	
 	long long int n, k;
 	scanf("%lld %lld", &n, &k);
 	
-	// find the odds & even numbers
-	long long int even_count = 1;
-	long long int odd_count = 1;
-	long long int middle = n / 2;
-	
-	// if we have even number
+	long long int odds_num = n / 2;
 	if (n % 2 != 0) {
-		middle = (n / 2) + 1;
+		odds_num += 1;
+	}
+	long long int evens_num = n - odds_num;
+	
+	long long int re;
+	if (k > odds_num) {
+		k = k - odds_num;
+		re = 2 * k;
+	} else {
+		re = 2 * (k - 1) + 1; 
 	}
 	
-	// find the k ele
-	for (long long int i = 1; i <= n; i++) {
-		if (i % 2 == 0) {
-			if (middle + odd_count == k) {
-				printf("%lld", i); break;
-			} odd_count++;
-		} else {
-				printf("%lld", i); break;
-			if (even_count == k) {
-			} even_count++;
-		}
-	}
-		
+	printf("%lld", re);
+	
+	
+	
+	
 	return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
