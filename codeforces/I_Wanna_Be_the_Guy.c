@@ -6,22 +6,28 @@
 int main() {
 	
 	// read & define 
-	int n, p, q, level = 1, input;
+	int n, p, q;
 	scanf("%d", &n);
+	int R[n];
 	scanf("%d", &p);
+	int X[p];
 	for (int i = 0; i < p; i++) {
-		scanf("%d", &input);
+		scanf("%d", &X[i]);
+		R[X[i] - 1] = -1;
 	}
 	scanf("%d", &q);
+	int Y[q];
 	for (int i = 0; i < q; i++) {
-		scanf("%d", &input);
-		if (level < n && level == input) {
-			level++;
-		}
+		scanf("%d", &Y[i]);
+		R[Y[i] - 1] = -1;
 	}
 	
-	if (level == n) printf("I become the guy.");
-	else printf("Oh, my keyboard!");
+	for (int i = 0; i < n; i++) {
+		if (R[i] != -1) {
+			printf("Oh, my keyboard!\n"); return 0;
+		}
+	}
+	printf("I become the guy.\n");
 	
 	
 	
