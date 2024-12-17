@@ -1,1 +1,1 @@
-# C_Problem_Solving
+# Comptitive Programmng (CP)
