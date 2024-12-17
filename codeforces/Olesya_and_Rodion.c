@@ -16,14 +16,22 @@ int getNumberOfDigit(int n) {
 
 int main() {
 
-	int n, t, number;
+	int n, t;
 	scanf("%d %d", &n, &t);
 	
-	for (int i = 0; i < n; i++) {
-		if (number % 10 != 0 && getNumberOfDigit(number) == n && number % t == 0) {
+	int number = 1;
+	for (int i = 0; i < n - 1; i++) {
+		number = number * 10;
+	}
+	
+	while (1) {
+		int NumberDigit = getNumberOfDigit(number);
+		if (number % t == 0 && NumberDigit == n) {
 			printf("%d\n", number);
-			return;
+			return 0;
 		}
+		if (NumberDigit == n + 1) break;
+		number += 1;
 	}
 	printf("%d\n", -1);
 	
