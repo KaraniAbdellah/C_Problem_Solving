@@ -1,7 +1,7 @@
 # For C
 CC = gcc
 TARGET = main
-SRCS = Olesya_and_Rodion.c
+SRCS = Football.c
 FLAGS = -Wextra -Wall
 
 all: clean $(TARGET)
