@@ -11,10 +11,6 @@ int main() {
 	char team1[10]; team1[9] = '\0';
 	char team2[10]; team2[9] = '\0';
 	
-	char teamOneFlag = '^'; 
-	char teamTwoFlag = '&';
-	char tempFlag = teamOneFlag;
-	
 	int teamOneCount = 0;
 	int teamTwoCount = 0;	
 	
@@ -23,21 +19,21 @@ int main() {
 		if (i == 0) {
 			scanf("%s", team1); // QCCYXL
 		} else {
-			scanf("%s", team2); // AXGLFQDD
+			scanf("%s", team2); // QCCYXL AXGLFQDD
 		}
 		
 		if (i != 0) {
 			if (strcmp(team1, team2) == 0 && teamOneCount >= teamTwoCount) {
-				tempFlag = teamOneFlag;
 				teamOneCount++;
 			} else {
-				tempFlag = teamTwoFlag;
+				if (teamOneCount >= teamTwoCount) strcpy(team1, team2);
+				else strcpy(team2, team1);
 				teamTwoCount++;
 			}
 		}
 	}
 	
-	if (tempFlag == teamOneFlag) printf("%s\n", team1);
+	if (teamOneCount >= teamTwoCount) printf("%s\n", team1);
 	else printf("%s\n", team2);
 	
 	return 0;
