@@ -8,8 +8,9 @@ int main() {
 	int n;
 	scanf("%d", &n);
 	
-	char *T[n];
-	char team1[n], team2[n];
+	char T[n][11];
+	char team1[10], team2[n];
+	team1[9] = '\0'; team2[9] = '\0';
 	
 	for (int i = 0; i < n; i++) {
 		scanf("%s", T[i]);
@@ -18,7 +19,6 @@ int main() {
 			strcpy(team2, T[i]);
 		}
 	}
-	
 	
 	int c1 = 0, c2 = 0;
 	for (int i = 0; i < n; i++) {
