@@ -3,17 +3,19 @@
 
 int main() {
     char word[200]; word[199] = '\0';
+    int countU = 0;
 
     scanf("%[^\n]", word);
-
-    for (int i = 0; i < strlen(word); i++) {
-        if (word[i] == 'W' && word[i + 1] == 'U' && word[i + 2] == 'B') word[i] = '1';
-        else if (word[i] == 'U' && word[i - 1] == 'W' && word[i + 1] == 'B') {
-            word[i] = '1';
-            printf("hello U");
+    int length = strlen(word);
+    for (int i = 0; i < length; i++) {
+        if (word[i] == 'B' && word[i - 1] == 'U' || word[i - 2] == 'W');
+        else if (i < length - 1 && word[i] == 'W' && word[i + 1] == 'U' && word[i + 2] == 'B');
+        else if (i > 0 && word[i] == 'U' && word[i + 1] == 'B' && word[i - 1] == 'W') {
+            printf(" ");
         }
-        else if (word[i] == 'B' && word[i - 1] == 'U' && word[i - 2] == 'W') word[i] = '1';
-        else printf("%c", word[i]);
+        else {
+            printf("%c", word[i]);
+        }
     }
 
     return 0;
