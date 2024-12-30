@@ -7,14 +7,15 @@ int check_triangle(int n, char word[n][n]) {
     for (int i = 0; i <= n / 2; i++) {
         // printf("i = %d\n", i);
         for (int j = 0; j < n; j++) {
-            // printf("wil be compare: %c %c\n", word[i][n - j - 1], word[n - i - 1][j]);
-            // printf("word[%d][%d] == word[%d][%d]\n", i, n - j - 1, n - i - 1, j);
+            // printf("wil be comparse: %c %c\n", word[i][n - j - 1], word[n - i - 1][j]);
             if (j < n - i - 1) {
                 if (word[i][n - j - 1] == word[n - i - 1][j]) {
                     continue;
                 } else return 0;
                 // printf("compared: %c %c\n", word[i][n - j - 1], word[n - i - 1][j]);
             }
+
+
         }
     }
     return 1;
@@ -41,12 +42,20 @@ int main() {
     int n;
     scanf("%d", &n);
     char word[n][n];
+    char SingleChar;
+    int check;
     for (int i = 0; i < n; i++) {
         getchar();
         for(int j = 0; j < n; j++) {
             scanf("%c", &word[i][j]);
+            if (i == 0 && j == 0) SingleChar = word[i][j];
         }
     }
+
+
+
+
+
 
     // Check the Triangles
     int check1 = check_triangle(n, word);
