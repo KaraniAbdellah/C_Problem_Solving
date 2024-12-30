@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 
+/*
 int check_triangle(int n, char word[n][n]) {
     for (int i = 0; i <= n / 2; i++) {
         for (int j = 0; j < n; j++) {
@@ -13,8 +14,10 @@ int check_triangle(int n, char word[n][n]) {
     }
     return 1;
 }
+*/
 
-int check_diagonls(int n, char word[n][n]) {
+
+int check_diagonls1(int n, char word[n][n]) {
     char temp = word[0][0];
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
@@ -26,6 +29,18 @@ int check_diagonls(int n, char word[n][n]) {
     }
     return 1;
 }
+
+
+int check_diagonls2(int n, char word[n][n]) {
+    char temp = word[0][0];
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            // check the diagonls here but the others side of X
+        }
+    }
+    return 1;
+}
+
 
 int main() {
     int n;
@@ -39,10 +54,10 @@ int main() {
     }
 
     // Check the Triangles
-    int check1 = check_triangle(n, word);
+    int check1 = check_diagonls1(n, word);
 
     // Check the digonals
-    int check2 = check_diagonls(n, word);
+    int check2 = check_diagonls2(n, word);
 
     // print the result
     if (check1 && check2) printf("YES\n");
