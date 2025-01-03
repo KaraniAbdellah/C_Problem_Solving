@@ -1,7 +1,5 @@
 #include <stdio.h>
 
-
-
 int check_diagonls2(int n, char word[n][n]) {
 
     for (int i = 0; i < n; i++) {
@@ -52,4 +50,3 @@ int main() {
     else printf("NO\n");
     return 0;
 }
-
