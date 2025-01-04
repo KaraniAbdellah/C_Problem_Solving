@@ -1,10 +1,12 @@
 #include <stdio.h>
-#include <math.h>
 
 // this last
 int find_last_digit(int n) {
-    long long int re = pow(1378, n);
-    return n % 10;
+    long long int re = 1378;
+    for (int i = 1; i < n; i++) {
+        re *= re;
+    }
+    return re % 10;
 } 
 
 int main() {
