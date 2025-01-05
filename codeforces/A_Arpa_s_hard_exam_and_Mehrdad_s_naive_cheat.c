@@ -2,11 +2,10 @@
 
 // this last
 int find_last_digit(int n) {
-    long long int re = 1378;
-    for (int i = 1; i < n; i++) {
-        re *= re;
-    }
-    return re % 10;
+   if (n % 3 == 0) return 2; 
+   else if (n % 2 == 0) return 4;
+   else if (n % 1 == 0) return 8;
+   else 0;
 } 
 
 int main() {
