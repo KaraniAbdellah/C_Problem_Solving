@@ -1,20 +1,6 @@
 #include <stdio.h>
 
 
-
-int fun(int n, int *re) {
-    if (n == 0) return *re;
-    else if (n % 2 == 0) {
-        *re += n;
-        return fun(n - 1);
-    }
-    else return {
-        *re -= n;
-        return fun(n - 1);
-    }
-}
-
-
 int main() {
     long long int n;
     scanf("%lld", &n);
