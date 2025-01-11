@@ -2,18 +2,17 @@
 
 
 int main() {
-    int n, m, a;
-    scanf("%d %d %d", &n, &m, &a);
+    long long int n, m, a;
+    scanf("%lld %lld %lld", &n, &m, &a);
 
-    int count = 0, i, j;
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < n; j++) {
-            if (j == a) {
-                count++;
-            }
-        }
-        j = a;
+    long long int count1 = 0, count2 = 0;
+    for (long long int i = 0; i < n; i+=a) {
+        count1++;
     }
+    for (long long int j = 0; j < m; j+=a) {
+        count2++;
+    }
+    printf("%lld", count1 * count2);
     return 0;
 }
 
