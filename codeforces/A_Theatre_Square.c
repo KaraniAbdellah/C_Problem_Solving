@@ -5,12 +5,15 @@ int main() {
     int n, m, a;
     scanf("%d %d %d", &n, &m, &a);
 
-    int start = a * a, i = 1;
-    for (i = 0; start == n * m; i++) {
-        start += start;
+    int count = 0, i, j;
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            if (j == a) {
+                count++;
+            }
+        }
+        j = a;
     }
-    printf("%d", i);
-
     return 0;
 }
 
