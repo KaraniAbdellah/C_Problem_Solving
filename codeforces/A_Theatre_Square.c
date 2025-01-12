@@ -5,14 +5,17 @@ int main() {
     long long int n, m, a;
     scanf("%lld %lld %lld", &n, &m, &a);
 
-    long long int count1 = 0, count2 = 0;
-    for (long long int i = 0; i < n; i+=a) {
-        count1++;
+    if (a == n) {
+        printf("%lld", a); return 0;
     }
-    for (long long int j = 0; j < m; j+=a) {
-        count2++;
+    
+
+    long long int count1 = 0, count2 = 0, j, i;
+    for (i = 0, j = 0; i < n && j < m; i+=a, j+=a) {
+        if (i < n) count1++;
+        if (j < m) count2++;
     }
-    printf("%lld", count1 * count2);
+    printf("%lld", count1 + count2);
     return 0;
 }
 
