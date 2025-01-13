@@ -1,24 +1,45 @@
 #include <stdio.h>
 
-// CoPrime Number [if the common factor is 1]
-/*
-    find (a, b, c) where (a, b) (b, c) are coprime 
-    and (a, c) is not coprime
-        l ≤ a < b < c ≤ r
-*/
+
+
+
 
 int main() {
-    int l, r;
-    scanf("%d %d", &l, &r);
+    long long int l, r;
+    scanf("%lld %lld", &l, &r);
     if (r - l == 1) {
         printf("-1\n");
         return 0;
     }
 
-    int a, b, c;
-    for (int i = l; i < r; i++) {
-
+    // Suppose that a = l
+    long long int a = l, b, c, div_a;
+    // find the division for a
+    long long int k = 2;
+    while (k <= a) {
+        if (a % k == 0) {
+            div_a = k; break;
+        }
+        k++;
     }
+    // printf("div_a = %d\n", div_a);
+
+    // find c
+    for (long long int i = r; i >= a + 1; i--) {
+        if (i % div_a == 0) {
+            c = i; break;
+        }
+    }
+
+    // find b
+    for (long long int i = a + 1; i < r && i != c; i++) {
+        if (i % div_a != 0) {
+            b = i; break;
+        }
+    }
+
+    printf("%lld %lld %lld\n", a, b, c);
+
 
 
 
