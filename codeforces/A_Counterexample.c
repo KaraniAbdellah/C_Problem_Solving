@@ -1,8 +1,10 @@
 #include <stdio.h>
 
 
-
-
+/*
+    (a, b) and (b, c) are coprime
+    (a, c) is not coprime
+ */
 
 int main() {
     long long int l, r;
