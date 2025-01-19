@@ -5,35 +5,43 @@ int main() {
 
     int n, count = 0, x, k;
     scanf("%d %d", &n, &k);
-    // char Digits[k];
     if (k == 0) {
         printf("1");
         return 0;
     }
+    k++;
+    char Digits[k + 1];
 
-    // getchar();
+    getchar();
     for (int i = 0; i < n; i++) {
-        // scanf("%[^\n]s", Digits);
-        // int sub_check = 0;
-        // for (int j = 0; j < k; j++) {
-        //     int check = 0;
-        //     for (int p = 0; p < k; p++) {
-        //         if (((char) p + '48') == Digits[j]) {
-        //             check = 1;
-        //             break;
-        //         }
-        //     }
-        //     if (check == 1) sub_check++;
-        //     else break;
-        // }
-        // if (sub_check == k) count++;
-        scanf("%d", &x);
-        int check = 0;
-        while (x != 0) {
-            check++;
-            x = x / 10;
+        scanf("%[^\n]s", Digits);
+        int lenght = strlen(Digits);
+        printf("lenght = %d\n", lenght);
+        int sub_check, check;
+        sub_check = 0;
+        for (int j = 0; j < lenght; j++) {
+            check = 0;
+            printf("digit = %c\n", Digits[j]);
+            for (int p = 0; p < lenght; p++) {
+                // printf("c = %c\n", ((char) (p + 48)));
+                if ((char) (p + 48) == (int) Digits[j]) {
+                    check = 1;
+                    printf("check = %d\n", check);
+                    break;
+                }
+            }
+            if (check == 1) sub_check++;
+            else break;
         }
-        if (check == k + 1) count++;
+        printf("sub %d\n", sub_check);
+        if (sub_check == k) count++;
+        // scanf("%d", &x);
+        // int check = 0;
+        // while (x != 0) {
+        //     check++;
+        //     x = x / 10;
+        // }
+        // if (check == k + 1) count++;
     }
 
     printf("%d\n", count);
