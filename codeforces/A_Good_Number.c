@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#include <string.h>
 
 int main() {
 
@@ -10,21 +10,31 @@ int main() {
         return 0;
     }
     // k++;
-    // char Digits[k + 1];
+    char Digits[11];
+    Digits[11] = '\0';
 
     getchar();
     for (int i = 0; i < n; i++) {
-        scanf("%d", &x);
+        // scanf("%d", &x);
+        // int check = 0;
+        // while (x != 0) {
+        //     for (int j = 0; j <= k; j++) {
+        //         if (x % 10 == j) {
+        //             check++; break;
+        //         } 
+        //     }
+        //     x = x / 10;
+        //     if (check == 1) count++;
+        // }
+        scanf("%[^\n]", Digits);
+        getchar();
         int check = 0;
-        while (x != 0) {
-            for (int j = 0; j <= k; j++) {
-                if (x % 10 == j) {
-                    check++; break;
-                } 
+        for (int j = 0; j < strlen(Digits); j++) {
+            if (Digits[j] == j) {
+                check = 1; break;
             }
-            x = x / 10;
-            if (check == 1) count++;
         }
+        if (check == 1) count++;
     }
 
     printf("%d\n", count);
