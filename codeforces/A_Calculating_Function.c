@@ -10,7 +10,7 @@ int main() {
     } else {
         printf("%lld", (-(n + 1) / 2));
     }
-    
+    return 0;
 }
 
 

@@ -1,28 +1,34 @@
 #include <stdio.h>
 #include <string.h>
 
+int find(char *S, char c) {
+    for (int i = 0; S[i] != '\0'; i++) {
+        if (c == S[i]) return 1;
+    }
+    return -1;
+}
+
 int main() {
-
-    int n, count = 0, x, k;
+    int n, count = 0, k;
     scanf("%d %d", &n, &k);
-    k++;
+    
+    // Array S contains all digits from 0 to 9
+    char S[] = "0123456789";  
 
-    getchar();
     for (int i = 0; i < n; i++) {
-        scanf("%d", &x);
+        char N[11];
+        scanf("%[^\n]", N);  // Read each number as a string
+        getchar();  // To consume the newline character
+
         int check = 0;
-        // printf("x = %d\n", x);
-        while (x != 0) {
-            if (check == k) break;
-            for (int j = 0; j < k; j++) { 
-                if (x % 10 == j) {
-                // printf("x %% 10 = %d and j = %d\n", x % 10, j);
-                    check++; break;
-                }
+        int length = strlen(N);  // Calculate string length once
+        for (int j = 0; j < length; j++) {
+            if (find(S, N[j])) {
+                check++;
             }
-            x = x / 10;
         }
-        if (check == k) count++;
+        
+        if (check >= k + 1) count++;
     }
 
     printf("%d\n", count);
